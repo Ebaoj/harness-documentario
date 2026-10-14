@@ -1,0 +1,456 @@
+{
+ "versao": 1,
+ "regras": [
+  {
+   "id": "M01",
+   "titulo": "cena dura pelo menos 3 s",
+   "texto": "Nenhum plano com menos de 3 s. A cartela final pode ser mais curta.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: as cenas passavam rápido demais"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "plano_duracao"
+  },
+  {
+   "id": "M02",
+   "titulo": "maioria de imagem real, bem distribuída",
+   "texto": "Imagem real do caso ocupa pelo menos 51% do tempo de tela, e nenhuma janela de 15 s fica abaixo de 30%. Gráfico, IA e stock genérico não contam como real.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: a maior parte do tempo de tela deve ser imagem real, distribuída ao longo do vídeo"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "plano_real"
+  },
+  {
+   "id": "M03",
+   "titulo": "imagem real é do caso, não de banco",
+   "texto": "Imagem real é material do próprio caso (TV, jornal, documento, fotos da pessoa). Banco de imagens genérico não conta como real.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: imagem real precisa ser da própria história, não de banco de imagens"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "fontes_do_caso"
+  },
+  {
+   "id": "M04",
+   "titulo": "nada por cima de vídeo real",
+   "texto": "Texto e formas não ficam sobre vídeo real, salvo intenção explícita no plano. O texto vai na margem e a janela do vídeo pode se deslocar para abrir espaço.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: texto e formas sobre vídeo só quando for intencional"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "plano_texto"
+  },
+  {
+   "id": "M05",
+   "titulo": "sem rótulo redundante",
+   "texto": "Rótulo só quando informa algo que a imagem não mostra (ex.: não usar 'INGLÊS → PORTUGUÊS' numa tradução que já se vê).",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: rótulo redundante com o que a imagem já mostra"
+   },
+   "verificacao": "manual"
+  },
+  {
+   "id": "M06",
+   "titulo": "rosto do acusado só depois da revelação",
+   "texto": "Antes do ponto de revelação marcado no roteiro, o rosto do acusado não aparece. A voz pode aparecer, como forma de onda.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: mostrar o rosto do acusado antes da revelação tira a tensão"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "plano_revelacao"
+  },
+  {
+   "id": "M07",
+   "titulo": "imagem mostra o que a frase diz",
+   "texto": "Cada plano mostra a pessoa, o lugar, o objeto ou a ação que a frase cita. Plano genérico enquanto a narração fala de outra coisa reprova. Pai, mãe e avós citados pedem imagem que os represente. A imagem entra quando a frase cita o que ela mostra: na cartela de capítulo, a foto em foco é a da fase do capítulo (O MENINO mostra a criança, não o adolescente).",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: planos genéricos que não comunicam o que a frase diz"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "plano_semantica"
+  },
+  {
+   "id": "M08",
+   "titulo": "cena-chave sem imagem vira reconstituição por IA",
+   "texto": "Momento central sem registro real pode ser reconstituído por IA, sem rosto de pessoa real, sempre com o rótulo 'RECONSTITUIÇÃO · IMAGEM GERADA POR IA' e declaração de conteúdo sintético no YouTube.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: o momento central não tinha registro real"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "plano_ia"
+  },
+  {
+   "id": "M09",
+   "titulo": "voz real no lugar da narração",
+   "texto": "Quando existe gravação do personagem ou de especialista dizendo o que a narração diria, ela entra no lugar da narração, com legenda em português e rótulo 'A VOZ DE…'.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: trazer vozes reais para não ficar só a narração"
+   },
+   "verificacao": "planejada",
+   "tarefa": "T24"
+  },
+  {
+   "id": "M10",
+   "titulo": "especialista na tela só com a voz dele",
+   "texto": "Entrevista só aparece em vídeo quando a voz da própria pessoa está tocando, com lábios em sincronia. Entrevista muda enquanto a narração fala outra coisa reprova. Arquivo de TV da época sem som é permitido: vale para natureza arquivo_tv, nunca para entrevista.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: entrevista na tela enquanto a narração falava de outra coisa"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "plano_entrevista"
+  },
+  {
+   "id": "M11",
+   "titulo": "legenda de voz real pelos tempos de palavra",
+   "texto": "A legenda de voz real sai da transcrição palavra a palavra do próprio trecho, nunca de estimativa. Tolerância de 0,3 s no início e no fim de cada legenda; a troca de imagem acompanha a frase.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: imagem, legenda e áudio desalinhados"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "plano_legenda"
+  },
+  {
+   "id": "M12",
+   "titulo": "corte de voz conferido por transcrição",
+   "texto": "Todo trecho de voz real cortado é transcrito de novo depois do corte, e o texto confere com o esperado: a transcrição de áudio longo desliza até 1 s.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "producao",
+    "citacao": "produção: o corte de uma voz real começava com outro narrador e terminava antes da frase"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "vozes_conferidas"
+  },
+  {
+   "id": "M13",
+   "titulo": "foto só com identidade confirmada",
+   "texto": "Foto de pessoa só entra com fonte que diga quem é e quando (legenda do documentário, jornal, registro). Na dúvida, fica fora.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: dúvida sobre a identidade de uma pessoa numa foto"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "fontes_identidade"
+  },
+  {
+   "id": "M14",
+   "titulo": "clipe de terceiros classificado antes de rotular",
+   "texto": "Todo clipe de documentário é classificado como fala na câmera, reencenação ou arquivo. Reencenação nunca recebe o nome de uma pessoa.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "producao",
+    "citacao": "produção: uma reencenação foi rotulada com o nome de uma pessoa real"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "fontes_natureza_clipe"
+  },
+  {
+   "id": "M15",
+   "titulo": "velocidade não passa do trecho útil",
+   "texto": "Clipe desacelerado ou acelerado não pode passar do trecho útil marcado na fonte.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "producao",
+    "citacao": "produção: um clipe desacelerado passou do trecho útil e mostrou outra coisa"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "plano_trecho"
+  },
+  {
+   "id": "M16",
+   "titulo": "rosto borrado só de quem não tem nada a ver",
+   "texto": "Pessoas envolvidas no caso (vítimas, familiares, testemunhas, polícia, jornalistas, especialistas, o acusado) aparecem com o rosto. Só quem não tem relação com o caso e está vivo (papel 'publico': advogado ao fundo, plateia, passante) aparece com os olhos borrados.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: borrar os olhos de quem não tem relação com a história"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "fontes_olhos"
+  },
+  {
+   "id": "M17",
+   "titulo": "cartela de capítulo é a linha da vida",
+   "texto": "A transição de capítulo é uma linha do tempo com as fotos reais da pessoa nos anos certos; a câmera desliza até a fase do capítulo, com número, período e título.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: a transição de capítulo deve mostrar as fases da vida com os anos e as fotos"
+   },
+   "verificacao": "planejada",
+   "tarefa": "T18"
+  },
+  {
+   "id": "M18",
+   "titulo": "guia de capítulos fixo no topo",
+   "texto": "Do primeiro capítulo em diante, a lista de capítulos fica visível no topo, com o atual destacado e o progresso.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: deixar os capítulos visíveis na tela como guia"
+   },
+   "verificacao": "planejada",
+   "tarefa": "T18"
+  },
+  {
+   "id": "M19",
+   "titulo": "círculo vermelho aponta quem importa",
+   "texto": "Em foto de grupo ou documento, a pessoa citada é apontada por um círculo vermelho desenhado na hora em que a frase a cita.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: circular a pessoa citada numa foto de grupo"
+   },
+   "verificacao": "planejada",
+   "tarefa": "T18"
+  },
+  {
+   "id": "M20",
+   "titulo": "IA simbólica, com sentido no contexto",
+   "texto": "Imagem de IA conta uma ideia por símbolo, no visual da época e do guia do canal (dossiê policial), em vez de imitar foto genérica.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: imagens de IA funcionam quando fazem sentido no contexto visual"
+   },
+   "verificacao": "manual"
+  },
+  {
+   "id": "M21",
+   "titulo": "pergunta-gancho depois da abertura",
+   "texto": "Depois da introdução vem uma pergunta que motiva o resto do vídeo (ex.: 'Como isso foi possível?').",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: faltava uma pergunta que motivasse o resto do vídeo depois da introdução"
+   },
+   "verificacao": "manual"
+  },
+  {
+   "id": "M22",
+   "titulo": "texto estrangeiro traduz na tela",
+   "texto": "Texto original em outra língua aparece primeiro como é e se traduz para o português com efeito.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: texto estrangeiro deveria aparecer no original e se traduzir com efeito"
+   },
+   "verificacao": "planejada",
+   "tarefa": "T18"
+  },
+  {
+   "id": "M23",
+   "titulo": "silêncio dramático editado no áudio",
+   "texto": "Pausas dramáticas são inseridas cortando o áudio nos pontos exatos, sem gerar a narração de novo. Ferramenta: scripts.narracao.montar(..., pausas=[{em, dur}]); onde a pausa entra é escolha dramática, conferida no checklist.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: inserir o silêncio editando o áudio, sem gerar a narração de novo"
+   },
+   "verificacao": "manual",
+   "tarefa": null
+  },
+  {
+   "id": "M24",
+   "titulo": "narração com tags no melhor modelo",
+   "texto": "Narração na voz configurada no estilo do canal, no modelo mais recente do ElevenLabs, com tags de interpretação ([pause], [whispers], [slowly]). Custo estimado e aprovado antes de gerar. Ferramenta: python -m scripts.narracao estimar/gerar (recusa gerar sem --aprovado-por; custo real no 00-custos.jsonl).",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: usar tags de interpretação e o melhor modelo disponível na narração"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcao": "narracao_aprovada"
+  },
+  {
+   "id": "M25",
+   "titulo": "entrega pronta para ver e mandar",
+   "texto": "Toda entrega gera a versão completa em versoes/, uma cópia abaixo de 16 MB para WhatsApp e abre no QuickTime (nunca tocar áudio sem janela). Ferramenta: python -m scripts.entrega (versionar, whatsapp, abrir, limpar).",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: precisa de uma cópia leve para mandar por mensagem; áudio tocando sem janela"
+   },
+   "verificacao": "manual",
+   "tarefa": null
+  },
+  {
+   "id": "M26",
+   "titulo": "imagem antiga pode ter ruído",
+   "texto": "Ruído e grão de imagem de época são aceitos; não tentar limpar.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: imagem antiga pode ter ruído"
+   },
+   "verificacao": "manual"
+  },
+  {
+   "id": "M27",
+   "titulo": "mixagem aprovada",
+   "texto": "Trilha a -15 dB com ducking sob a voz (mais fundo sob voz real), efeitos sóbrios nos cortes, final em -14 LUFS e pico de -1,5 dB. Os padrões ficam em canais/<canal>/estilo.json (som) e o mixador (scripts/som.py) os aplica; a entrega reprova volume final fora de -16,5 a -13 LUFS. A escuta humana confirma.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: mixagem aprovada"
+   },
+   "verificacao": "manual",
+   "tarefa": null
+  },
+  {
+   "id": "M28",
+   "titulo": "emenda contínua entre partes",
+   "texto": "Partes de um mesmo vídeo (abertura, gancho, capítulos) emendam sem sinal de fim: a trilha é uma só e segue de onde parou (sem fade-out e fade-in na emenda, sem recomeçar a música). A passagem é uma transição com função (ex.: a linha da vida voltando no tempo). Toda faixa de uma parte (voz, vozes reais, trilha, efeitos) tem exatamente a duração do vídeo da parte: a voz da abertura era 80 ms mais curta e o compressor da trilha zerou o fim. A montagem final junta os WAV originais e comprime uma vez só. A verificação mede a emenda em janelas de 10 ms e reprova silêncio abaixo de -60 dB que não esteja no roteiro. O volume é normalizado uma vez só, no vídeo inteiro (duas passadas, curva linear): cada parte entrega a mixagem crua. Normalizar parte por parte muda o ganho na emenda (medido: salto de cerca de 20 dB entre duas partes).",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: a emenda entre duas partes não parecia contínua"
+   },
+   "verificacao": "auto",
+   "tarefa": null,
+   "funcoes": [
+    "faixas_com_duracao_da_parte",
+    "emenda_sem_silencio"
+   ]
+  },
+  {
+   "id": "M29",
+   "titulo": "a parte seguinte não repete o último plano",
+   "texto": "O primeiro plano de uma parte (gancho, capítulo) não repete o último plano da parte anterior: repetir parece que o vídeo voltou.",
+   "origem": {
+    "data": "2026-10-08",
+    "autor": "revisao",
+    "citacao": "revisão: a emenda entre duas partes não parecia contínua"
+   },
+   "verificacao": "manual"
+  },
+  {
+   "id": "M30",
+   "titulo": "sem legenda queimada de outra produção",
+   "texto": "Imagem tirada de outro documentário ou telejornal não mostra a legenda, o título ou a marca escritos por eles: recortar ou escolher outro trecho.",
+   "origem": {
+    "data": "2026-10-09",
+    "autor": "producao",
+    "citacao": "prancha: a imagem de outra produção vinha com a legenda dela escrita"
+   },
+   "verificacao": "manual"
+  },
+  {
+   "id": "M31",
+   "titulo": "nenhum texto nem imagem por cima de outro",
+   "texto": "Na prancha, nenhum rótulo, crédito, lista ou cartão cobre outro: documento deitado em lista usa largura máxima, rótulo de voz não divide a linha do crédito do arquivo.",
+   "origem": {
+    "data": "2026-10-09",
+    "autor": "producao",
+    "citacao": "prancha: um rótulo cobria outro e uma lista invadia uma manchete"
+   },
+   "verificacao": "manual"
+  },
+  {
+   "id": "M32",
+   "titulo": "a música nunca cobre a narração",
+   "texto": "Sob a fala (narração ou voz real) a trilha fica pelo menos 18 dB abaixo da voz, num nível constante em cada trecho de fala: pausas menores que 1,5 s não a fazem subir; ela só sobe em silêncio de verdade e desce antes da fala seguinte. Efeitos ficam 10 dB abaixo da palavra que cobrem. A mixagem grava a folga medida e a regra reprova folga menor.",
+   "origem": {
+    "data": "2026-10-09",
+    "autor": "revisao",
+    "citacao": "revisão: a música encobria a narração em vários momentos"
+   },
+   "verificacao": "auto",
+   "funcao": "musica_abaixo_da_fala"
+  },
+  {
+   "id": "M33",
+   "titulo": "oralidade sem erro de português",
+   "texto": "O roteiro soa falado, mas em português correto: só 'pra' em alguns momentos; nada de 'tava', 'tá' (por 'estar'), 'num' (por 'não'), 'pro' ou regência coloquial ('chegou no'). Contração correta ('num cano') pode.",
+   "origem": {
+    "data": "2026-10-10",
+    "autor": "revisao",
+    "citacao": "revisão de roteiro: oralidade com erro de português"
+   },
+   "verificacao": "manual"
+  },
+  {
+   "id": "M34",
+   "titulo": "a imagem mostra o que a narração conta",
+   "texto": "Cada trecho da narração é representado, sempre que existir, por imagem real do próprio acontecimento, lugar ou pessoa de que se fala (fotos da época, arquivo de TV, documentos, retratos das vítimas com olhos borrados). Manchete, reconstituição ou foto repetida do acusado só entram quando a busca pela imagem real não achou nada; o plano registra o que foi procurado.",
+   "origem": {
+    "data": "2026-10-10",
+    "autor": "revisao",
+    "citacao": "revisão: representar a narração com imagens reais dos acontecimentos, lugares e pessoas"
+   },
+   "verificacao": "manual"
+  },
+  {
+   "id": "M35",
+   "titulo": "o crime é contado no como, não só no resultado",
+   "texto": "Quando o roteiro chega a um crime, conta como foi: como ele escolheu, entrou, rendeu e matou, em ordem, com fonte para cada passo e, quando existir, na voz do próprio acusado. Dizer só quem morreu não basta. Sem detalhe sexual nem imagem de corpo.",
+   "origem": {
+    "data": "2026-10-10",
+    "autor": "revisao",
+    "citacao": "revisão de roteiro: contar só o resultado do crime não basta"
+   },
+   "verificacao": "manual"
+  },
+  {
+   "id": "M36",
+   "titulo": "trecho de ficção só falando da obra, rotulado",
+   "texto": "Cena de filme ou série sobre o caso pode entrar em trechos curtos, de 3 a 5 s cada, só quando a narração está falando da própria obra, nunca como imagem do caso real, sempre com o rótulo na tela 'TÍTULO, ESTÚDIO, ANO · FICÇÃO'. Risco aceito como decisão de produto: reivindicação de Content ID (receita para o dono ou bloqueio regional); crédito na tela não é licença.",
+   "origem": {
+    "data": "2026-10-10",
+    "autor": "revisao",
+    "citacao": "decisão de produto: trechos curtos de obras de ficção sobre a história, rotulados"
+   },
+   "verificacao": "manual"
+  },
+  {
+   "id": "M37",
+   "titulo": "encerramento com like, inscrição e próximo episódio",
+   "texto": "Todo episódio termina numa parte de encerramento (tipo encerramento, até 40 s, só a voz do narrador): pedido de like e inscrição com o botão animado, o gancho do próximo episódio e cerca de 12 s finais limpos para a tela final do YouTube. Essa parte dispensa a M02 (imagem real), que vale para o conteúdo.",
+   "origem": {
+    "data": "2026-10-12",
+    "autor": "revisao",
+    "citacao": "decisão de produto: encerramento com pedido de like e inscrição"
+   },
+   "verificacao": "manual"
+  }
+ ]
+}

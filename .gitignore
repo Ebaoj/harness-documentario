@@ -1,0 +1,35 @@
+# ambiente
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# episódios (material de terceiros, narração, renders, aprovações e custos): nunca no repositório
+videos/
+renders/
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.m4a
+*.mp3
+*.wav
+*.aiff
+
+# caches de render e montagem
+.cache-render/
+.cache-montagem/
+motion-assets/
+*.db
+
+# dados locais do canal e do ambiente
+canais/*/musicas/
+canais/*/marca/
+canais/*/modelo/quadros/
+modelos/
+.env
+.env.*
+
+# estudo de canais de referência (mídia e transcrições de terceiros)
+referencias/

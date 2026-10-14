@@ -1,0 +1,42 @@
+{
+ "nota": "Estilo de exemplo de um canal. A biblioteca motion/componentes.js lê cores, fontes, grão e fps só daqui. Copie esta pasta para canais/<seu-canal>/ e ajuste.",
+ "cores": {
+  "fundo": "#0a0a0b",
+  "papel": "#e9e4d8",
+  "tinta": "#16130f",
+  "vermelho": "#c1272d",
+  "apagado": "#77736b",
+  "ambar": "#c8a25a",
+  "linha": "#2a2a2c"
+ },
+ "fontes": {
+  "display": "\"Avenir Next Condensed\",\"Helvetica Neue\",sans-serif",
+  "maquina": "\"American Typewriter\",\"Courier New\",monospace",
+  "serifa": "\"Baskerville\",\"Times New Roman\",serif"
+ },
+ "grao": 0.1,
+ "fps": 30,
+ "som": {
+  "nota": "Mixagem padrão (M27): trilha a -15 dB, cai a 0,4 sob voz real, efeitos sóbrios a -9 dB, cruzamento de 5 s. M32: sob a fala a trilha fica num nível constante por trecho, com o nível típico 18 dB abaixo do nível típico da voz e os picos pelo menos 12 dB abaixo; pausas menores que silencio_minimo_s não a fazem subir. Efeitos ficam 10 dB abaixo da palavra que cobrem (efeitos_folga_db). pasta_musicas relativa é resolvida a partir desta pasta (ou pela variável de ambiente HARNESS_MUSICAS).",
+  "trilha_db": -15,
+  "sob_voz_real": 0.4,
+  "efeitos_db": -9,
+  "cruzamento": 5,
+  "efeitos_pico": 0.5,
+  "semente": 22,
+  "longe_de_impacto": 0.4,
+  "pasta_musicas": "musicas",
+  "folga_sob_voz_db": 18,
+  "efeitos_folga_db": 10,
+  "silencio_minimo_s": 1.5
+ },
+ "narracao": {
+  "nota": "Narração por TTS no ElevenLabs. Troque 'voz' pelo id da sua voz. 'chave' é o NOME da variável de ambiente (ou do segredo no seu gerenciador, via HARNESS_SECRET_CMD) que guarda a API key; o valor nunca fica neste arquivo. O texto usa tags de interpretação em inglês entre colchetes (M24).",
+  "voz": "YOUR_VOICE_ID",
+  "modelo": "eleven_v4",
+  "idioma": "pt",
+  "formato": "mp3_44100_128",
+  "chave": "ELEVENLABS_API_KEY",
+  "creditos_por_caractere": 0.06
+ }
+}

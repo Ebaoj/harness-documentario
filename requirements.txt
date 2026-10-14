@@ -1,0 +1,5 @@
+pytest
+yt-dlp==2026.8.19
+pillow
+numpy
+playwright==1.58.0
