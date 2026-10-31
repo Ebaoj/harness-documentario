@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Ativar uma vez por clone: git config core.hooksPath scripts/hooks
+# Bloqueia push direto para main e roda as checagens locais (docs/PADRAO.md).
+set -euo pipefail
+while read -r _local _sha ref _rsha; do
+  if [ "$ref" = refs/heads/main ] || [ "$ref" = refs/heads/master ]; then
+    echo "pre-push: push direto para main bloqueado. Abra PR e use scripts/merge-guard.sh." >&2
+    exit 1
+  fi
+done
+[ "${PADRAO_SEM_CHECAGEM:-0}" = 1 ] && { echo "pre-push: checagens puladas (PADRAO_SEM_CHECAGEM=1)"; exit 0; }
+echo "pre-push: rodando checagens locais..."
+if [ "$(uname)" = Darwin ]; then python3 -m pytest -q; else python3 -m pytest -q --ignore=tests/test_render.py --ignore=tests/test_entrega.py --ignore=tests/test_episodio.py; fi
