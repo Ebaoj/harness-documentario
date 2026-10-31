@@ -1,0 +1,52 @@
+# CI de verificação. test_render/test_entrega/test_episodio ficam fora: dependem do encoder
+# h264_videotoolbox (macOS) e falham em runner Linux. Rodar local no Mac antes de merge.
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - name: ffmpeg recente (o 6.x do apt gera mixagem muda em test_som)
+        run: |
+          curl -sL https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz | tar xJ -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/ffmpeg-master-latest-linux64-gpl/bin" >> "$GITHUB_PATH"
+      - run: pip install -r requirements.txt && python -m playwright install --with-deps chromium
+      - run: pytest -q --ignore=tests/test_render.py --ignore=tests/test_entrega.py --ignore=tests/test_episodio.py
+  regressao:
+    # commit fix: sem arquivo de teste alterado no PR = vermelho (docs/PADRAO.md).
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: fix exige teste
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          FIX=$(git log --format=%s "$BASE"..HEAD | grep -E '^fix(\(.+\))?!?:' || true)
+          [ -z "$FIX" ] && { echo "sem commits fix:"; exit 0; }
+          TESTES=$(git diff --name-only "$BASE"...HEAD | grep -E '(__tests__/|\.test\.|\.spec\.|^tests?/|^testes/|/test_[^/]*\.py$)' || true)
+          [ -n "$TESTES" ] || { echo "::error::commit fix: sem teste de regressão"; echo "$FIX"; exit 1; }
+          echo "ok: $TESTES"
+  ci-ok:
+    if: always()
+    needs: [pytest, regressao]
+    runs-on: ubuntu-latest
+    steps:
+      - name: todos verdes (skipped só vale para regressao fora de PR)
+        env: { R: "${{ toJSON(needs) }}" }
+        run: |
+          echo "$R" | jq -e 'to_entries | all(.value.result == "success" or .value.result == "skipped")' \
+            || { echo "$R" | jq -r 'to_entries[] | "\(.key): \(.value.result)"'; exit 1; }
